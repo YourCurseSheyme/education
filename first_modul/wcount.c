@@ -4,15 +4,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int kStackSize = 600000;
+const int kStackSize = 300000;
 
 int wcount(const char* string) {
+  if (string == NULL) {
+    return 0;
+  }
   size_t idx = 0;
   size_t answer = 0;
+  char current_char;
   int being_in_word = 0;
-  while (string[idx] != '\n') {
+  while (string[idx] != '\n' && string[idx] != '\0') {
+    current_char = string[idx];
     ++idx;
-    if (string[idx] == ' ') {
+    if (current_char == ' ') {
       being_in_word = 0;
       continue;
     }
