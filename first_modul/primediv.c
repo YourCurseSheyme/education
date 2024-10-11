@@ -29,14 +29,15 @@ long long Sieve(long long number) {
   if (number < 0) {
     stop_point = -1;
   }
-  long long checker = Sqrt(number < 0 ? -number : number);
+  number = number < 0 ? -number : number;
+  long long checker = Sqrt(number);
   while (number != stop_point) {
     if (divider <= 2) {
       ++divider;
     } else {
       divider += 2;
       if (divider > checker) {
-        return number < 0 ? -number : number;
+        return number;
       }
     }
     while (number % divider == 0) {
